@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+import com.google.gson.Gson;
 import com.productinstallments.model.PayloadModel;
 import com.productinstallments.model.PaymentMethodModel;
 import com.productinstallments.model.ProductModel;
@@ -35,23 +36,26 @@ public class InstallmentController {
         int parcelas = condicaoPagamento.getQtdeParcelas();
         BigDecimal valorProduto = produto.getValor();
         ArrayList<ResponseItemModel> installmentList = this.createInstallmentList(parcelas, valorProduto);
-    	throw new Exception("TODO");
+        return new Gson().toJson(installmentList);
     }
     
     private ArrayList<ResponseItemModel> createInstallmentList(int parcelas, BigDecimal valorProduto) throws Exception {
     	BigDecimal installmentPrice;
     	BigDecimal parcelasDecimal = new BigDecimal(Integer.toString(parcelas));
     	ArrayList<ResponseItemModel> installments = new ArrayList<ResponseItemModel>();
+    	BigDecimal interestRate = new BigDecimal(this.installmentService.getInterestRate());
     	
         if (parcelas < 7) {
-        	installmentPrice = valorProduto.divide(parcelasDecimal, 2, RoundingMode.DOWN);
+        	installmentPrice = valorProduto.divide(parcelasDecimal, 2, RoundingMode.CEILING);
         }
         else {
-        	throw new Exception("TODO");
+        	BigDecimal compoundInterest = interestRate.add(BigDecimal.ONE).pow(parcelas);
+        	BigDecimal newPrice = valorProduto.multiply(compoundInterest);
+        	LOGGER.info("Acima de seis parcelas, novo valor computado é: " + newPrice.toString());
+        	installmentPrice = newPrice.divide(parcelasDecimal, 2, RoundingMode.CEILING);
         }
         
         for(int i = 0; i < parcelas; i++) {
-        	BigDecimal interestRate = new BigDecimal("1.15");
         	ResponseItemModel responseItem = new ResponseItemModel(i, installmentPrice, interestRate);
         	installments.add(responseItem);
         }
