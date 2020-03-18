@@ -1,13 +1,7 @@
 package com.productinstallments.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
 public class PaymentMethodModel {
-	@Getter @Setter
 	private float valorEntrada;
-	
-	@Getter @Setter
 	private int qtdeParcelas;
 	
 	public PaymentMethodModel() {
@@ -15,7 +9,23 @@ public class PaymentMethodModel {
     }
 
     public PaymentMethodModel(float valorEntrada, int qtdeParcelas) {
-        this.valorEntrada = valorEntrada;
-        this.qtdeParcelas = qtdeParcelas;
+        this.setValorEntrada(valorEntrada);
+        this.setQtdeParcelas(qtdeParcelas);
     }
+
+	public float getValorEntrada() {
+		return valorEntrada;
+	}
+
+	public void setValorEntrada(float valorEntrada) {
+		this.valorEntrada = valorEntrada;
+	}
+
+	public int getQtdeParcelas() {
+		return qtdeParcelas;
+	}
+
+	public void setQtdeParcelas(int qtdeParcelas) {
+		this.qtdeParcelas = qtdeParcelas;
+	}
 }
