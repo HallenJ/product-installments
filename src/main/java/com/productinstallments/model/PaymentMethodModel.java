@@ -1,23 +1,25 @@
 package com.productinstallments.model;
 
+import java.math.BigDecimal;
+
 public class PaymentMethodModel {
-	private float valorEntrada;
+	private BigDecimal valorEntrada;
 	private int qtdeParcelas;
 	
 	public PaymentMethodModel() {
 
     }
 
-    public PaymentMethodModel(float valorEntrada, int qtdeParcelas) {
+    public PaymentMethodModel(BigDecimal valorEntrada, int qtdeParcelas) {
         this.setValorEntrada(valorEntrada);
         this.setQtdeParcelas(qtdeParcelas);
     }
 
-	public float getValorEntrada() {
+	public BigDecimal getValorEntrada() {
 		return valorEntrada;
 	}
 
-	public void setValorEntrada(float valorEntrada) {
+	public void setValorEntrada(BigDecimal valorEntrada) {
 		this.valorEntrada = valorEntrada;
 	}
 
