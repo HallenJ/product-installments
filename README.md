@@ -36,3 +36,6 @@ E em seguida execute o jar gerado na pasta target. Caso esteja utilizando sua ID
 A chamada foi testada com o aplicativo [Postman](https://www.postman.com/), porém qualquer outro aplicativo ou linha de comando servem para utilização
 ### POST /installments
 O método de POST é o que envia a URL a ser convertida, e retorna uma URL encurtada. Basta enviar um objeto JSON no formato descrito anteriormente.
+
+## Acessando o Swagger da Aplicação
+Para acessar o Swagger, basta iniciar a aplicação e acessar localhost:8080/swagger-ui.html
