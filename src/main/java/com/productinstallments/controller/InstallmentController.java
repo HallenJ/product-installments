@@ -56,7 +56,7 @@ public class InstallmentController {
         }
         
         for(int i = 0; i < parcelas; i++) {
-        	ResponseItemModel responseItem = new ResponseItemModel(i, installmentPrice, interestRate);
+        	ResponseItemModel responseItem = new ResponseItemModel(i + 1, installmentPrice, interestRate);
         	installments.add(responseItem);
         }
         
