@@ -9,15 +9,15 @@ Este projeto é uma aplicação Java que recebe uma entrada JSON contendo dados 
 ## Modelo de Entrada
 
     {
-      "produto": {
-        "codigo": 123,
-        "nome": "Nome do Produto",
-        "valor": "10000.00"
-    },
-    "condicaoPagamento": {
-        "valorEntrada": "2000.00",
-        "qtdeParcelas": 10
-    }
+        "produto": {
+            "codigo": 123,
+            "nome": "Nome do Produto",
+            "valor": "10000.00"
+        },
+        "condicaoPagamento": {
+            "valorEntrada": "2000.00",
+            "qtdeParcelas": 10
+        }
     }
 
 ## Instalação
